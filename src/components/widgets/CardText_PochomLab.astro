@@ -1,0 +1,26 @@
+---
+// カード型テキストコンポーネント
+
+const { title, items = [] } = Astro.props;
+---
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<section class="py-24 bg-neutral-100 dark:bg-slate-950">
+  <div class="container mx-auto max-w-5xl">
+    {title && <h2 class="text-2xl font-serif mb-12 text-center">{title}</h2>}
+    {
+      items && items.length ? (
+        <div class="grid md:grid-cols-3 gap-8">
+          {items.map(({ title: caption, description }) => (
+            <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
+              <h3 class="text-xl mb-2">{caption}</h3>
+              <p set:html={description} class="text-sm opacity-80" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-sm opacity-80">No items to display.</p>
+      )
+    }
+  </div>
+</section>

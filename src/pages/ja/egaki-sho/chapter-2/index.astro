@@ -1,0 +1,110 @@
+---
+import Layout from '~/layouts/LandingLayout_EgakiSho_Ja.astro';
+const metadata = {
+  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+};
+import Hero from '~/components/widgets/HeroText_PochomLab.astro';
+import CardText from '~/components/widgets/CardText_PochomLab.astro';
+import ToC from '~/components/widgets/ToC_PochomLab.astro';
+import ImagePreview from '~/components/widgets/ImagePreview_PochomLab.astro';
+import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
+import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
+---
+
+<Layout metadata={metadata}>
+
+<!-- 1. Hero（章の顔） -->
+<Hero
+  chapter="第2章"
+  title="やさしさの&ensp;たね"
+  subtitle="こころに落ちた、小さな種。"
+  content="見えない気持ちが、誰かへ伸びはじめる。"
+/>
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<CardText
+  title="この章で出会うもの"
+  items={[
+    {
+      title: '🌙こわさ',
+      description: 'まだ言葉にならない、不安の灯。',
+    },
+    {
+      title: '🤝ともだち',
+      description: '隣に立つ存在。距離が縮まる瞬間。',
+    },
+    {
+      title: '🌱やさしさ',
+      description: '心に触れた種。静かに芽吹く力。',
+    },
+  ]}
+/>
+
+
+<!-- 3. 灯の目次（第1章） -->
+<ToC
+  title="灯の目次"
+  labelWidth="w-12"  
+  items={[
+    { label: "09灯", description: "まだよるがこわい" },
+    { label: "10灯", description: "ともだちっているのかな" },
+    { label: "11灯", description: "だいじょうぶのひかり" },
+    { label: "12灯", description: "やさしくできたよ" },
+    { label: "13灯", description: "おこってるの" },
+    { label: "14灯", description: "にげこんだ もり" },
+    { label: "15灯", description: "さわれないきもち" },
+    { label: "16灯", description: "いかだにのって" },
+  ]}
+/> 
+
+<ImagePreview
+  title="試し読み"
+  items=
+  {[
+    {
+      src: "/images/egaki-sho/egaki-sho-ch2-preview1.webp",
+      alt: "第2章 試し読み（左ページ）",
+      width: 1748,
+      height: 2480,
+    },
+    {
+      src: "/images/egaki-sho/egaki-sho-ch2-preview2.webp",
+      alt: "第2章 試し読み（右ページ）",
+      width: 1748,
+      height: 2480,
+    },
+  ]}
+/>
+
+<!-- 4. 読む / 買う（CTA） -->
+<CallToAction
+  title="読む／買う"
+  button=
+  {{ 
+    text: "Kindleで読む（KDP）", 
+    href: "https://www.amazon.co.jp/dp/B0GFZ9WCJY/"
+  }}
+>
+  <Fragment slot="content">
+    第2章（9〜16灯）を、1冊として読む。
+    <br>
+    余白とページの呼吸まで含めて完成する絵書です。
+  </Fragment>
+  <Fragment slot="annotation">
+    ※ リンク先はAmazon（Kindle）です。
+  </Fragment>
+</CallToAction>
+
+<!-- 5. 次の章へ：次章カード -->
+<CardLink
+  title="次の章へ"
+  chapter="第3章"
+  chapterTitle="まよいの&ensp;たびじ"
+  chapterDescription="やさしさは、やがて一歩になる。"
+  button={{ 
+    text: "第3章を見る", 
+    href: "/ja/egaki-sho/chapter-3"
+  }}
+/>
+
+</Layout>

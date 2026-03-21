@@ -1,0 +1,84 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro';
+import Hero from '~/components/widgets/Hero_PochomLab2.astro';
+import Concept from './_sections/Concept.astro';
+import Abyss from './_sections/Abyss.astro';
+import RecordBlock from './_sections/RecordBlock.astro';
+import Chapters from './_sections/Chapters.astro';
+import Invitation from '~/components/widgets/CallToAction_Invitation.astro';
+---
+
+<PageLayout>
+  <!-- 0. 序：絵書の鼓動（Hero）-->
+<Hero
+  id="top"
+  imageUrl="/images/egaki-sho/egaki-sho-hero.webp"
+  alt="The metaverse world of Egaki-sho"
+  width="2000"
+  height="1200"
+  scrollTarget="concept"
+>
+  <Fragment slot="title">
+    Another metaverse,<br />
+    beyond picture books.
+  </Fragment>
+
+  <Fragment slot="subtitle">
+    A 175-page record of lights<br />
+    walked by humans and the latest AI.
+  </Fragment>
+
+  <Fragment slot="scrollText">
+    Scroll to unfold the journey.
+  </Fragment>
+</Hero>
+
+  <!-- 1. 絵書とは（Concept）-->
+<Concept>
+  <Fragment slot="title">What is Egaki-sho</Fragment>
+
+  <Fragment slot="lead">
+    Neither a picture book nor a comic.<br />
+    A form of expression for long-form storytelling,<br />
+    where stories and ideas are built light by light.
+  </Fragment>
+
+  <Fragment slot="description">
+    A 175-page record of a journey,<br />
+    walked through dialogue between humans and generative AI.
+    That is Egaki-sho.
+  </Fragment>
+</Concept>
+
+  <!-- 2. 深淵：世界と構造（World + Structure + Fragments）-->
+  <Abyss />
+
+  <!-- 3 . 軌跡：記録と伴走（Record + Process + Behind）-->
+  <RecordBlock />
+
+  <!-- 4. 旅路：本編（Chapters）-->
+  <Chapters />
+
+  <!-- 5. 結：招待とCTA（Invitation & CTA）-->
+  <Invitation
+    primary={{ label: 'Get Egaki-sho (View Library)', href: '/en/library' }}
+    secondary={{ label: 'Explore the Making (ZINE)', href: '/en/zine/egaki-sho-create' }}
+  >
+    <Fragment slot="title">Conclusion: Invitation</Fragment>
+
+    <Fragment slot="lead">
+      Bring this journey into your hands.<br />
+      And light your own lamp.
+    </Fragment>
+
+    <Fragment slot="description">
+      Egaki-sho is not something that ends when you finish reading.<br />
+      It is a work where the light passes on.<br />
+      What remains after the final page becomes the beginning of the next story.
+    </Fragment>
+
+    <Fragment slot="footer">
+      The one who carries the light forward is you.
+    </Fragment>
+  </Invitation>
+</PageLayout>

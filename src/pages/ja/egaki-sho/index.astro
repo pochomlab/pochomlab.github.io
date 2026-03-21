@@ -1,0 +1,70 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import Hero from '~/components/widgets/Hero_PochomLab2.astro';
+import Concept from './_sections/Concept.astro';
+import Abyss from './_sections/Abyss.astro';
+import RecordBlock from './_sections/RecordBlock.astro';
+import Chapters from './_sections/Chapters.astro';
+import Invitation from '~/components/widgets/CallToAction_Invitation.astro';
+---
+
+<PageLayout>
+  <!-- 0. 序：絵書の鼓動（Hero）-->
+  <Hero
+    id="top"
+    imageUrl="/images/egaki-sho/egaki-sho-hero.webp"
+    alt="絵書のメタバース世界"
+    width="2000"
+    height="1200"
+    scrollTarget="concept"
+  >
+    <Fragment slot="title"> 絵本を超えた、もう一つのメタバース。 </Fragment>
+    <Fragment slot="subtitle"> 最新AIと人間が歩いた、175ページの灯の記録。 </Fragment>
+    <Fragment slot="scrollText"> スクロールして、旅の記録を紐解く </Fragment>
+  </Hero>
+
+  <!-- 1. 絵書とは（Concept）-->
+  <Concept>
+    <Fragment slot="title"> 絵書とは </Fragment>
+
+    <Fragment slot="lead">
+      絵本でもなく、漫画でもない。<br />
+      物語と思想を“灯”単位で積み重ねていく、<br />
+      長編のための表現形式。
+    </Fragment>
+
+    <Fragment slot="description">
+      生成AIと人間が対話しながら歩いた、<br />
+      175ページの記録。それが絵書である。
+    </Fragment>
+  </Concept>
+
+  <!-- 2. 深淵：世界と構造（World + Structure + Fragments）-->
+  <Abyss />
+
+  <!-- 3 . 軌跡：記録と伴走（Record + Process + Behind）-->
+  <RecordBlock />
+
+  <!-- 4. 旅路：本編（Chapters）-->
+  <Chapters />
+
+  <!-- 5. 結：招待とCTA（Invitation & CTA）-->
+  <Invitation
+    primary={{ label: '絵書を手に入れる（作品一覧へ）', href: '/ja/library' }}
+    secondary={{ label: '制作の裏側をもっと知る（ZINE紹介へ）', href: '/ja/zine/egaki-sho-create' }}
+  >
+    <Fragment slot="title"> 結：招待 </Fragment>
+
+    <Fragment slot="lead">
+      この旅路を、あなたの手元へ。<br />
+      そして、あなた自身の灯を。
+    </Fragment>
+
+    <Fragment slot="description">
+      「絵書」は、読んで終わりではなく、灯が移っていく作品です。<br />
+      ページを閉じたあとに残るものが、次の物語のはじまりになります。
+    </Fragment>
+
+    <Fragment slot="footer"> 灯を継ぐのは、あなたです。 </Fragment>
+  </Invitation>
+</PageLayout>

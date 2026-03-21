@@ -1,0 +1,156 @@
+---
+type Stat = { value: string; label: string };
+type Evolution = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption: string;
+};
+
+const data = {
+  // 1) Record（数字）
+  record: {
+    id: 'record',
+    stats: [
+      { value: '175', label: 'ページ' },
+      { value: '4', label: '章' },
+      { value: '35', label: '灯' },
+      { value: '∞', label: '再設計' },
+    ] satisfies Stat[],
+    footnote: '生成AIと人間が並走した、総距離。',
+  },
+
+  // 2) Why
+  why: {
+    id: 'why',
+    title: '続けるために、形式を発明した。',
+    lines: [
+      '絵本でも、漫画でもない。',
+      '物語と思索を「灯」単位で積み重ねていく、長編のための表現形式。',
+      '生成AIの揺らぎと、人の意志がぶつかるたびに、構造は更新された。',
+      'だからこの作品は、物語であり、制作の記録でもある。',
+    ],
+  },
+
+  // 3) Process
+  process: {
+    id: 'process',
+    title: '対話しながら、再設計した。',
+    paragraphs: [
+      '生成AIは、常に同じ答えを返すわけではない。 モデルの更新、パラメータの違い、わずかなプロンプトの差。昨日と同じ条件でも、別の世界が出力される。',
+      '構図を固定し、線を調整し、 時には設計そのものを組み替えた。',
+      '出力は偶然ではない。 試行と判断の積み重ねだ。',
+    ],
+  },
+
+  // 4) Evolution
+  evolution: {
+    id: 'evolution',
+    title: '変化に合わせて、構造を変えた。',
+    phases: [
+      {
+        src: '/images/egaki-sho/egaki-sho-phase1.webp',
+        alt: '初期：生成AIの立体性に依存',
+        width: 400,
+        height: 500,
+        caption: '初期：生成AIの立体性に依存',
+      },
+      {
+        src: '/images/egaki-sho/egaki-sho-phase2.webp',
+        alt: '中期：再現性を優先した設計',
+        width: 400,
+        height: 500,
+        caption: '中期：再現性を優先した設計',
+      },
+      {
+        src: '/images/egaki-sho/egaki-sho-phase3.webp',
+        alt: '揺らぎを世界観へ統合',
+        width: 400,
+        height: 500,
+        caption: '後期：揺らぎを世界観へ統合',
+      },
+    ] satisfies Evolution[],
+    closingHtml: `形式は、揺らぎの中で定まった。<br />
+<span class="text-gray-400">そして、その形式で物語は歩き始める。</span>`,
+  },
+};
+---
+
+<!-- 3-1. 軌跡：記録（Record） -->
+<section
+  id={data.record.id}
+  class="scroll-mt-0 first-letter:relative isolate overflow-hidden bg-black text-white border-t border-white/5"
+>
+  <div class="h-16 bg-gradient-to-b from-slate-950 to-black"></div>
+
+  <div class="mx-auto max-w-4xl px-6 py-32 text-center">
+    <div class="space-y-14">
+      {
+        data.record.stats.map((s) => (
+          <div>
+            <p class="text-6xl md:text-8xl font-light tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+              {s.value}
+            </p>
+            <p class="mt-2 text-lg md:text-xl text-gray-400">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-24 text-sm md:text-base text-gray-500 tracking-wide">{data.record.footnote}</p>
+  </div>
+
+  <div class="h-16 bg-gradient-to-t from-slate-950 to-black"></div>
+</section>
+
+<!-- 3-2. Why -->
+<section id={data.why.id} class="relative isolate bg-slate-950 text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">{data.why.title}</h2>
+
+    <div class="mt-10 space-y-4 text-base md:text-lg leading-relaxed text-gray-300">
+      {data.why.lines.map((line) => <p>{line}</p>)}
+    </div>
+  </div>
+</section>
+
+<!-- 3-3. Process -->
+<section id={data.process.id} class="relative isolate bg-slate-950 text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">{data.process.title}</h2>
+
+    <div class="mt-10 space-y-5 text-base md:text-lg leading-relaxed text-gray-300">
+      {data.process.paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<!-- 3-4. Evolution -->
+<section id={data.evolution.id} class="relative isolate bg-slate-950 text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">{data.evolution.title}</h2>
+
+    <div class="mt-16 space-y-24">
+      {
+        data.evolution.phases.map((ph) => (
+          <div class="mx-auto max-w-[400px]">
+            <img
+              src={ph.src}
+              class="w-full rounded-lg"
+              alt={ph.alt}
+              loading="lazy"
+              width={ph.width}
+              height={ph.height}
+            />
+            <p class="mt-6 text-sm md:text-base text-gray-400">{ph.caption}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-24 text-center">
+      <p class="text-base md:text-lg leading-relaxed text-gray-300" set:html={data.evolution.closingHtml} />
+    </div>
+  </div>
+</section>

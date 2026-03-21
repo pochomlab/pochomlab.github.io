@@ -1,0 +1,11 @@
+---
+import Note from '~/components/widgets/Note.astro';
+
+const ANNOUNCE = {
+  enabled: false,
+  title: 'Announcement',
+  description: 'The official PochomLab website is now live!',
+};
+---
+
+{ANNOUNCE.enabled && <Note title={ANNOUNCE.title} description={ANNOUNCE.description} />}

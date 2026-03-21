@@ -1,0 +1,113 @@
+---
+import Layout from '~/layouts/LandingLayout_EgakiSho_En.astro';
+const metadata = {
+  title: 'Egaki-sho of the Pochomkin — A Story of Lights | PochomLab',
+};
+import Hero from '~/components/widgets/HeroText_PochomLab.astro';
+import CardText from '~/components/widgets/CardText_PochomLab.astro';
+import ToC from '~/components/widgets/ToC_PochomLab.astro';
+import ImagePreview from '~/components/widgets/ImagePreview_PochomLab.astro';
+import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
+//import CardLink from '~/components/widgets/CardLink.astro';
+---
+
+<Layout metadata={metadata}>
+  <!-- 1. Hero -->
+  <Hero
+    chapter="Chapter 4"
+    title="The Soul Metaverse"
+    subtitle="A place where the soul is born anew."
+    content="The journey of the heart begins to open again."
+  />
+
+  <!-- 2. What you will encounter in this chapter -->
+  <CardText
+    title="What you will encounter in this chapter"
+    items={[
+      {
+        title: '🌌 Metaverse',
+        description: 'Another layer where souls overlap and resonate.',
+      },
+      {
+        title: '🔁 Renewal',
+        description: 'The moment when memories and pain transform into light.',
+      },
+      {
+        title: '🚪 A Door',
+        description: 'An unseen entrance for being born anew.',
+      },
+    ]}
+  />
+
+  <!-- 3. Lights (keep titles in Japanese for now) -->
+  <ToC
+    title="Lights of Chapter 4"
+    labelWidth="w-24"     
+    items={[
+      { label: 'Light 25', description: 'はじまりのこえ' },
+      { label: 'Light 26', description: 'であいのしずく' },
+      { label: 'Light 27', description: 'まよいのほこら' },
+      { label: 'Light 28', description: 'ふりかえりのうた' },
+      { label: 'Light 29', description: 'ひかりのきおく' },
+      { label: 'Light 30', description: 'たましいのゆらぎ' },
+      { label: 'Light 31', description: 'でんせつのひかり' },
+      { label: 'Light 32', description: 'きみをしってる' },
+      { label: 'Light 33', description: 'ひびきのはて' },
+      { label: 'Light 34', description: 'たましいのログアウト' },
+      { label: 'Light 35', description: 'えいえんのたび' },
+    ]}
+  />
+
+  <ImagePreview
+    title="Preview"
+    items={[
+      {
+        src: '/images/egaki-sho/egaki-sho-ch4-preview1.webp',
+        alt: 'Chapter 4 preview — left page',
+        width: 1748,
+        height: 2480,
+      },
+      {
+        src: '/images/egaki-sho/egaki-sho-ch4-preview2.webp',
+        alt: 'Chapter 4 preview — right page',
+        width: 1748,
+        height: 2480,
+      },
+    ]}
+  />
+
+  <!-- 4. Read / Buy (CTA) -->
+  <CallToAction
+    title="Read / Buy"
+    button={{
+      text: 'Read on Kindle (KDP)',
+      href: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
+    }}
+  >
+    <Fragment slot="content">
+      Read Chapter 4 (Lights 25-35) as one complete volume.
+      <br />
+      Egaki-sho comes to life through the rhythm of space and the breathing of its pages.
+    </Fragment>
+    <Fragment slot="annotation">
+      <i>
+        This link leads to the Japanese Kindle edition on Amazon.
+        <br />
+        English edition coming soon.
+      </i>
+    </Fragment>
+  </CallToAction>
+  <!-- 5. Next chapter -->
+  <!--
+<CardLink
+  title="次の章へ"
+  chapter="第5章"
+  chapterTitle="たましいの&ensp;メタバース"
+  chapterDescription="ひらいた世界の、その奥へ。"
+  button={{ 
+    text: "第5章を見る", 
+    href: "/egaki-sho/chapter-5"
+  }}
+/>
+ -->
+</Layout>

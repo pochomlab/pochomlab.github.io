@@ -1,0 +1,31 @@
+---
+import Layout from '~/layouts/Layout_PochomLab.astro';
+import Header from '~/components/widgets/Header_PochomLab.astro';
+import Footer from '~/components/widgets/Footer.astro';
+//import Announcement from '~/components/widgets/Announcement_PochomLab_Ja.astro';
+
+import { headerDataJa , footerData } from '~/navigation-ja';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <!-- <slot name="announcement">
+    <Announcement />
+  </slot> -->
+  <slot name="header">
+    <Header {...headerDataJa} isSticky showRssFeed showToggleTheme />   
+  </slot>
+  <main>
+    <slot />
+  </main>
+  <slot name="footer">
+    <Footer {...footerData} />
+  </slot>
+</Layout>

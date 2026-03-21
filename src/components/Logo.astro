@@ -1,0 +1,11 @@
+---
+import { SITE } from 'astrowind:config';
+import logo from '~/assets/favicons/pochomlab-favicon128.svg';
+---
+
+<span class="flex items-center gap-2 self-center ml-2 rtl:ml-0 rtl:mr-2">
+  <img src={logo.src} alt="PochomLab Logo" class="h-5 w-5" />
+  <span class="text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
+    {SITE?.name}
+  </span>
+</span>

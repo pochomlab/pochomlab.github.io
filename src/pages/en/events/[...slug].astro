@@ -1,0 +1,106 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro';
+import { render, getCollection } from 'astro:content';
+import { formatEventDate, EVENT_TYPE_LABEL } from '~/utils/events';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events
+    .filter((e) => !e.data.draft)
+    .map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<PageLayout>
+
+  <article class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <div class="my-4">
+            <a class="text-sm text-neutral-500 hover:underline inset-y-64" href="/en/events">← イベント に戻る</a>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300">
+        
+        <span class="text-xs rounded-full px-2 py-1 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
+          {EVENT_TYPE_LABEL[entry.data.type] ?? 'EVENT'}
+        </span>
+
+        <span>
+          {formatEventDate(entry.data.startDate, entry.data.endDate)}
+          {entry.data.timezone ? (
+            <span class="ml-2 text-xs text-neutral-500 dark:text-neutral-400">
+              ({entry.data.timezone})
+            </span>
+          ) : null}
+        </span>
+
+        {entry.data.author ? <span>· {entry.data.author}</span> : null}        
+        {entry.data.location ? <span>· {entry.data.location}</span> : null}
+        {entry.data.venue ? <span>· {entry.data.venue}</span> : null}
+      </div>
+
+      <h1 class="mt-3 text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100">
+        {entry.data.title}
+      </h1>
+
+      {entry.data.cover && (
+        <img
+          src={entry.data.cover}
+          alt={entry.data.title}
+          class="mt-8 rounded-2xl w-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
+      )}
+
+      {(entry.data.links?.length || entry.data.lineup?.length || entry.data.tags?.length) ? (
+        <div class="mt-8 rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/50 p-5">
+          {entry.data.lineup?.length ? (
+            <div>
+              <div class="font-medium">Lineup</div>
+              <ul class="mt-2 list-disc pl-5 text-neutral-700 dark:text-neutral-200">
+                {entry.data.lineup.map((x) => <li>{x}</li>)}
+              </ul>
+            </div>
+          ) : null}
+
+          {entry.data.links?.length ? (
+            <div class={entry.data.lineup?.length ? 'mt-6' : ''}>
+              <div class="font-medium">Links</div>
+              <ul class="mt-2 space-y-2">
+                {entry.data.links.map((l) => (
+                  <li>
+                    <a class="underline" href={l.url} target="_blank" rel="noreferrer">
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {entry.data.tags?.length ? (
+            <div class={(entry.data.links?.length || entry.data.lineup?.length) ? 'mt-6' : ''}>
+              <div class="font-medium">Tags</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                {entry.data.tags.map((t) => (
+                  <span class="text-xs rounded-full px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      <div class="prose dark:prose-invert mt-10">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+</PageLayout>

@@ -1,0 +1,45 @@
+---
+
+interface Props {
+  store: string;
+  url?: string;
+  label: string; // 必須
+  aria: string;
+  disabled?: boolean;
+  fullWidth?: boolean;
+}
+
+const { store, url, label, aria, disabled: disabledProp = false, fullWidth = false } = Astro.props;
+
+const disabled = disabledProp || !url;
+const base = `inline-flex ${fullWidth ? 'w-full ' : ''}items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-white transition`;
+const brand = store === 'kdp' ? 'bg-teal-600' : 'bg-indigo-600';
+const hover = store === 'kdp' ? 'hover:bg-teal-700' : 'hover:bg-indigo-700';
+const state = disabled ? 'opacity-50 cursor-not-allowed' : hover;
+const className = `${base} ${brand} ${state}`;
+---
+
+{
+  disabled ? (
+    <a
+      href="#"
+      target="_blank"
+      style="pointer-events:none"
+      rel="noopener noreferrer"
+      class={className}
+      aria-label={aria}
+    >
+      {label}
+    </a>
+  ) : (
+    <a
+      href={url} 
+      target="_blank"
+      rel="noopener noreferrer"
+      class={className}
+      aria-label={aria}
+    >
+      {label}
+    </a>
+  )
+}

@@ -1,0 +1,212 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import { getCollection } from 'astro:content';
+import { formatEventDate, isUpcoming, EVENT_TYPE_LABEL } from '~/utils/events';
+
+const all = (await getCollection('events'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+
+const upcoming = all
+  .filter((e) => isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime());
+
+const past = all
+  .filter((e) => !isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+
+//const Card = (e) => e; // 型の都合でプレースホルダー（Astroは下でそのまま使う）
+const DEFAULT_EVENT_COVER: Record<string, string> = {
+  zine: '/images/events/default-zine.webp',
+  online: '/images/events/default-online.webp',
+  release: '/images/events/default-release.webp',
+  talk: '/images/events/default-talk.webp',
+  other: '/images/events/default-other.webp',
+};
+---
+
+<PageLayout>
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-semibold">🎫 イベント</h1>
+      <p class="mt-3 text-neutral-600 dark:text-neutral-300">
+        リリースや頒布、参加イベントの記録をまとめたページです。
+      </p>
+
+      <nav class="mt-6 text-sm text-neutral-500 dark:text-neutral-400 flex flex-wrap justify-center gap-x-4 gap-y-2">
+        <a href="#upcoming" class="hover:underline">開催予定</a>
+        <span>・</span>
+        <a href="#past" class="hover:underline">開催済み</a>
+        <span>・</span>
+        <a href="#library" class="hover:underline">他の作品も見る</a>
+        <span>・</span>
+        <a href="#collaborators" class="hover:underline">コラボレーター募集</a>
+      </nav>
+
+      {
+        upcoming.length ? (
+          <div id="upcoming" class="mt-12 scroll-mt-24">
+            <h2 class="text-xl font-semibold">開催予定</h2>
+            <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {upcoming.map((e) => (
+                <a
+                  href={`/ja/events/${e.slug}`}
+                  class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
+                >
+                  <span id={`${e.slug}`} class="block scroll-mt-24" />
+                  <img
+                    src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
+                    alt={e.data.title}
+                    class="h-44 w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 text-xs">
+                      <span class="rounded-full px-2 py-1 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
+                        {EVENT_TYPE_LABEL[e.data.type] ?? 'EVENT'}
+                      </span>
+                      <span class="text-neutral-500 dark:text-neutral-400">
+                        {formatEventDate(e.data.startDate, e.data.endDate)}
+                      </span>
+                    </div>
+
+                    <div class="mt-2 font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline">
+                      {e.data.title}
+                    </div>
+
+                    {e.data.location ? (
+                      <div class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                        {e.data.location}
+                        {e.data.venue ? ` / ${e.data.venue}` : ''}
+                      </div>
+                    ) : null}
+
+                    {e.data.tags?.length ? (
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        {e.data.tags.slice(0, 4).map((t) => (
+                          <span class="text-xs rounded-full px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null
+      }
+
+      {
+        past.length ? (
+          <div id="past" class="mt-14 scroll-mt-24">
+            <h2 class="text-xl font-semibold">開催済み</h2>
+            <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {past.map((e) => (
+                <a
+                  href={`/ja/events/${e.slug}`}
+                  class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
+                >
+                  <span id={`${e.slug}`} class="block scroll-mt-24" />
+                  <img
+                    src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
+                    alt={e.data.title}
+                    class="h-44 w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 text-xs">
+                      <span class="rounded-full px-2 py-1 bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100">
+                        {EVENT_TYPE_LABEL[e.data.type] ?? 'EVENT'}
+                      </span>
+                      <span class="text-neutral-500 dark:text-neutral-400">
+                        {formatEventDate(e.data.startDate, e.data.endDate)}
+                      </span>
+                    </div>
+
+                    <div class="mt-2 font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline">
+                      {e.data.title}
+                    </div>
+
+                    {e.data.location ? (
+                      <div class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                        {e.data.location}
+                        {e.data.venue ? ` / ${e.data.venue}` : ''}
+                      </div>
+                    ) : null}
+
+                    {e.data.tags?.length ? (
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        {e.data.tags.slice(0, 4).map((t) => (
+                          <span class="text-xs rounded-full px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null
+      }
+    </div>
+  </section>
+
+  <!-- LibraryへのCTA -->
+  <section id="library" class="scroll-mt-16 py-16 bg-neutral-50 dark:bg-neutral-950 text-center">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-serif font-light">他の作品も見る</h2>
+
+      <p class="mt-4 text-sm sm:text-base text-black/70 dark:text-white/70">
+        イベント出展作品を含む、PochomLabの作品一覧はこちら。
+      </p>
+
+      <div class="mt-8">
+        <a
+          href="/ja/library"
+          class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold
+        bg-cyan-600 text-white hover:bg-cyan-500
+        dark:bg-cyan-500 dark:hover:bg-cyan-400"
+        >
+          作品一覧を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="collaborators"
+    class="scroll-mt-16 py-16 bg-neutral-50 dark:bg-neutral-950 border-t border-neutral-200/60 dark:border-neutral-800/80"
+  >
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="text-2xl sm:text-3xl font-serif font-light">🤝 Collaborators / コラボレーター募集</h2>
+
+      <p class="mt-4 text-sm sm:text-base leading-relaxed text-black/70 dark:text-white/70">
+        PochomLabでは、イベントや創作の記録を一緒に育てていくコラボレーターを募集しています。
+      </p>
+
+      <p class="mt-4 text-sm sm:text-base leading-relaxed text-black/70 dark:text-white/70">
+        参加方法や活動内容は、概要ページをご覧ください。
+      </p>
+
+      <div class="mt-8">
+        <a
+          href="/ja/about#collaborators"
+          class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold
+          bg-neutral-900 text-white hover:bg-neutral-800
+          dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+          コラボレーター参加について
+        </a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

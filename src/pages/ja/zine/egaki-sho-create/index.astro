@@ -1,0 +1,59 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import Hero from '~/components/widgets/Hero_PochomLab2.astro';
+import WhatZINE from './_sections/WhatZINE.astro';
+import ZineCards from './_sections/ZineCards.astro';
+import Garden307 from './_sections/Garden307.astro';
+import Invitation from '~/components/widgets/CallToAction_Invitation.astro';
+---
+
+<PageLayout>
+  <!-- 0. Hero（静かな導入）-->
+  <Hero
+    id="top"
+    imageUrl="/images/zine/egaki-sho-create/egaki-sho-create-hero.webp"
+    alt="すべてのエショナーへ"
+    width="2000"
+    height="1200"
+    scrollTarget="about-zine"
+  >
+    <Fragment slot="title">
+      絵書を創る、<br />
+      すべてのエショナーへ。
+    </Fragment>
+    <Fragment slot="subtitle">
+      生成AIという新しい筆で、物語を構造化する。<br />
+      PochomLabが実践した制作の型を公開。
+    </Fragment>
+    <Fragment slot="scrollText"> 技法を分かち合い、文化を灯す。 </Fragment>
+  </Hero>
+
+  <!-- 1. ZINEとは何か（短い哲学）-->
+  <WhatZINE />
+
+  <!-- 3. 各ZINEカード（Hero的扱いはここ）-->
+  <ZineCards />
+
+  <!-- 4. 307の庭へ自然接続-->
+  <Garden307 />
+
+  <!-- 5. 結：招待とCTA（Invitation & CTA）-->
+  <Invitation
+    primary={{ label: '作品一覧を見る', href: '/ja/library' }}
+    secondary={{ label: '絵書の世界へ戻る', href: '/ja/egaki-sho' }}
+  >
+    <Fragment slot="title"> 結：招待 </Fragment>
+
+    <Fragment slot="lead">
+      作品を、一覧で。<br />
+      あなたの手元に届く入口をまとめました。
+    </Fragment>
+
+    <Fragment slot="description">
+      ZINEは、制作の記録です。<br />
+      そこから本編へ、そして次の灯へ繋がっていきます。
+    </Fragment>
+
+    <Fragment slot="footer"> 灯は、行き来できるように。 </Fragment>
+  </Invitation>
+</PageLayout>

@@ -1,0 +1,182 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import Hero from '~/components/widgets/Hero_PochomLab2.astro';
+---
+
+<PageLayout>
+  <!-- 0. Hero（静かな導入）-->
+  <Hero id="about-site" imageUrl="/images/about-hero.webp" alt="PochomLabの柿の大樹" width="2000" height="1200">
+    <Fragment slot="title"> PochomLabとは </Fragment>
+    <Fragment slot="subtitle"> 創作の過程をそのまま残すための、小さな実験室です。 </Fragment>
+  </Hero>
+
+  <!-- Concept Section -->
+  <section id="concept" class="py-24 bg-neutral-50 dark:bg-slate-950">
+    <div class="mx-auto max-w-3xl px-6 text-center text-xl leading-relaxed text-neutral-800 dark:text-white/85">
+      <p class="text-lg leading-relaxed mb-8">
+        思いつき、試し、迷い、形にし、また作る。
+        <br />
+        その繰り返しを、ひとつの流れとして扱っています。
+      </p>
+
+      <p class="text-lg leading-relaxed">
+        ここでは、作品も技術も記録も、
+        <br />
+        切り離さずに並べています。
+      </p>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section id="profile" class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10">
+    <div class="mx-auto max-w-2xl px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">☕️ 自己紹介</h2>
+
+      <!-- Icon + Text -->
+      <div class="flex flex-col sm:flex-row sm:items-start gap-8">
+        <!-- Icon -->
+        <div class="mx-auto sm:mx-0 shrink-0">
+          <img
+            src="/images/profile/about-profile-icon.webp"
+            alt="プロフィールアイコン"
+            width="120"
+            height="120"
+            class="rounded-2xl opacity-95 shadow-sm ring-1 ring-black/10 dark:ring-white/10"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Text -->
+        <div class="text-lg leading-relaxed space-y-6 text-neutral-800 dark:text-white/85">
+          <p class="text-xl font-semibold">井筒 康晴（いづつ やすはる）</p>
+
+          <p>
+            プログラマー。<br />
+            過去に約10年間、3DCGデザイナーとして活動し、<br />
+            背景制作やビジュアル設計を中心に制作を行う。
+          </p>
+
+          <p>
+            現在は、生成AIを活用した創作と技術実装を軸に、<br />
+            『ポチョム菌の絵書』の制作と運営を行っている。
+          </p>
+
+          <p>
+            創作・技術・出版・記録をひとつの流れとして扱う場として、<br />
+            PochomLabを運営している。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10">
+    <div class="mx-auto max-w-2xl px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">📩 お問い合わせ</h2>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        ご意見・ご感想・制作や取材のご相談などは、 下記メールアドレスまでご連絡ください。
+        内容を確認のうえ、必要に応じてご返信いたします。
+      </p>
+
+      <div class="rounded-xl bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-2">Email</p>
+        <br />
+        <a
+          href="mailto:pochomlab@gmail.com"
+          class="text-lg font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+        >
+          pochomlab@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact garden Section -->
+  <section
+    id="contact-garden-307"
+    class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10"
+  >
+    <div class="mx-auto max-w-2xl px-6">
+      <h3 class="text-2xl font-semibold mb-10 text-center">🌿 307の庭 掲載希望について</h3>
+
+      <p class="text-sm leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        307の庭に芽を植えたい方は、以下の形式で
+        <a
+          href="#contact"
+          class="text-lg font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+        >
+          メール
+        </a>
+        をお送りください。 内容を確認のうえ、掲載可否をご連絡いたします。
+      </p>
+
+      <div class="rounded-sm bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+        件名：<br />
+        307の庭 掲載希望 / （お名前）<br />
+        <br />
+        本文：<br />
+        ■ 表示名：<br />
+        ■ 表示名（English / Romaji）：<br />
+        ■ 肩書き：<br />
+        ■ 紹介文（1行）：<br />
+        ■ コメント（最大3行）：<br />
+        ■ WebサイトURL：<br />
+        ■ XアカウントURL：<br />
+        ■ アイコン画像（128px以上・添付可）
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborators Section -->
+  <section
+    id="collaborators"
+    class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10"
+  >
+    <div class="mx-auto max-w-2xl px-6">
+      <h3 class="text-2xl font-semibold mb-10 text-center">🤝 コラボレーター参加について</h3>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        PochomLabでは、生成AIを使った創作やイベント、Logの記録を一緒に育てていくコラボレーターを募集しています。
+      </p>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        ZINEや展示、頒布、小さな活動の記録まで。
+        <br>
+        デジタルとアナログのあいだにある灯を、ゆるやかにつないでいけたらと思っています。
+      </p>
+
+      <div class="rounded-xl bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+   
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          記事の追加・更新は GitHub で行っています。
+        </p>
+        <br>
+
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          参加方法は
+          <a href="https://github.com/pochomlab/pochomlab.github.io/blob/main/README-ja.md" class="underline underline-offset-4">
+            README
+          </a>
+          にまとめています。
+        </p>
+
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          操作が難しい場合は、
+          <a
+            href="#contact"
+            class="font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+          >
+            お問い合わせ
+          </a>
+          からお気軽にご相談ください。
+          <br>
+        </p>        
+
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

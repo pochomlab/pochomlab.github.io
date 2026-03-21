@@ -1,0 +1,188 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro';
+import Hero from '~/components/widgets/Hero_PochomLab2.astro';
+---
+
+<PageLayout>
+  <!-- 0. Hero（静かな導入）-->
+  <Hero
+    id="about-site"
+    imageUrl="/images/about-hero.webp"
+    alt="The persimmon tree of PochomLab"
+    width="2000"
+    height="1200"
+  >
+    <Fragment slot="title"> What is PochomLab? </Fragment>
+    <Fragment slot="subtitle"> A small laboratory for preserving the creative process as it is. </Fragment>
+  </Hero>
+
+  <!-- Concept Section -->
+  <section id="concept" class="py-24 bg-neutral-50 dark:bg-slate-950">
+    <div class="mx-auto max-w-3xl px-6 text-center text-xl leading-relaxed text-neutral-800 dark:text-white/85">
+      <p class="text-lg leading-relaxed mb-8">
+        Ideas emerge, experiments begin, doubts appear, forms take shape,
+        <br />
+        and creation starts again.
+        <br />
+        This repetition is treated as a single continuous flow.
+      </p>
+
+      <p class="text-lg leading-relaxed">
+        Here, works, technology, and records
+        <br />
+        are placed side by side without being separated.
+      </p>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section id="profile" class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10">
+    <div class="mx-auto max-w-2xl px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">☕️ Profile</h2>
+
+      <!-- Icon + Text -->
+      <div class="flex flex-col sm:flex-row sm:items-start gap-8">
+        <!-- Icon -->
+        <div class="mx-auto sm:mx-0 shrink-0">
+          <img
+            src="/images/profile/about-profile-icon.webp"
+            alt="Profile icon"
+            width="120"
+            height="120"
+            class="rounded-2xl opacity-95 shadow-sm ring-1 ring-black/10 dark:ring-white/10"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Text -->
+        <div class="text-lg leading-relaxed space-y-6 text-neutral-800 dark:text-white/85">
+          <p class="text-xl font-semibold">Yasuharu Izutsu</p>
+
+          <p>
+            Programmer.<br />
+            Previously worked for about ten years as a 3DCG designer, focusing mainly on background production and visual
+            design.
+          </p>
+
+          <p>
+            Currently working on creative projects and technical implementation using generative AI,<br />
+            while producing and managing <em>Pochomkin Egaki-sho</em>.
+          </p>
+
+          <p>
+            PochomLab is operated as a place where<br />
+            creation, technology, publishing, and documentation are treated as a single continuous flow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10">
+    <div class="mx-auto max-w-2xl px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">📩 Contact</h2>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        For feedback, comments, or inquiries about production and interviews, please contact us at the email address
+        below. We will review your message and respond if necessary.
+      </p>
+
+      <div class="rounded-xl bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-2">Email</p>
+        <br />
+        <a
+          href="mailto:pochomlab@gmail.com"
+          class="text-lg font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+        >
+          pochomlab@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact garden Section -->
+  <section
+    id="contact-garden-307"
+    class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10"
+  >
+    <div class="mx-auto max-w-2xl px-6">
+      <h3 class="text-2xl font-semibold mb-10 text-center">🌿 About Submitting to Garden 307</h3>
+
+      <p class="text-sm leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        If you would like to plant a seed in Garden 307, please send an
+        <a
+          href="#contact"
+          class="text-lg font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+        >
+          email
+        </a>
+        using the format below. After reviewing your message, we will contact you regarding whether it can be published.
+      </p>
+
+      <div class="rounded-sm bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+        Subject:<br />
+        Garden 307 Submission / (Your Name)<br />
+        <br />
+        Message:<br />
+        ■ Display Name:<br />
+        ■ Display Name (English / Romaji):<br />
+        ■ Title / Role:<br />
+        ■ Introduction (1 line):<br />
+        ■ Comment (up to 3 lines):<br />
+        ■ Website URL:<br />
+        ■ X Account URL:<br />
+        ■ Icon Image (128px or larger, attachment allowed)
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborators Section -->
+  <section
+    id="collaborators"
+    class="scroll-mt-8 py-24 bg-neutral-50 dark:bg-slate-950 border-t border-neutral-200/10"
+  >
+    <div class="mx-auto max-w-2xl px-6">
+      <h3 class="text-2xl font-semibold mb-10 text-center">🤝 About Collaborator Participation</h3>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        PochomLab is looking for collaborators who would like to help nurture creative work made with generative AI, as well as records of events and log articles.
+      </p>
+
+      <p class="text-lg leading-relaxed text-neutral-800 dark:text-white/85 mb-8">
+        From ZINEs, exhibitions, and distribution to small activity records, we hope to gently connect the lights that exist between digital and analog.
+
+      </p>
+
+      <div class="rounded-xl bg-white dark:bg-slate-900/30 border border-neutral-200 dark:border-neutral-800 p-6">
+   
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          Articles are added and updated through GitHub.
+        </p>
+        <br>
+
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          How to join is explained in the
+          <a href="https://github.com/pochomlab/pochomlab.github.io/blob/main/README.md" class="underline underline-offset-4">
+            README
+          </a>
+        </p>
+
+        <p class="text-neutral-800 dark:text-white/85 leading-relaxed">
+          If GitHub feels difficult to use, please feel free to
+          <a
+            href="#contact"
+            class="font-semibold underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+          >
+            contact
+          </a>
+          us.
+          <br>
+        </p>        
+
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

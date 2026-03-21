@@ -1,0 +1,49 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+
+const id = ANALYTICS?.vendors?.googleAnalytics?.id
+  ? String(ANALYTICS.vendors.googleAnalytics.id)
+  : null;
+
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && id ? (
+  <>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline define:vars={{ id }}>
+      (() => {
+        console.log('■ Analytics_PochomLab -  Google tag');
+        const s = document.createElement('script');
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+        s.async = false; // ★ これが重要
+        document.head.appendChild(s);
+      })();
+    </script>
+
+    <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
+    <script is:inline define:vars={{ id }}>
+      (() => {
+        console.log('■ Analytics_PochomLab -  Consent Mode');
+        const GA_ID = id;
+
+        window.dataLayer = window.dataLayer || [];
+        // eslint-disable-next-line prefer-rest-params
+        window.gtag = function gtag(){ dataLayer.push(arguments); }
+
+        // Consent Mode（初期値：拒否）
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          analytics_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+
+        gtag('js', new Date());
+        console.log('Analytics_PochomLabのconfig');
+        gtag('config', GA_ID, { send_page_view: false });
+
+      })();
+    </script>
+  </>
+) : null}
