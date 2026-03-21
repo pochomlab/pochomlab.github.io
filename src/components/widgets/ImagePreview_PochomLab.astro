@@ -1,0 +1,28 @@
+---
+// イメージプレビューコンポーネント
+const { title, items = [] } = Astro.props;
+---
+
+<!-- 4.イメージプレビュー -->
+<section class="py-20 bg-neutral-100 dark:bg-slate-950">
+  <div class="container mx-auto max-w-5xl text-center">
+    {title && <h2 class="text-2xl font-serif mb-10">{title}</h2>}
+    <div class="mx-auto flex flex-col md:flex-row justify-center items-start gap-8">
+      {
+        items && items.length ? (
+          items.map(({ src, alt, width, height }) => (
+            <img
+              src={src}
+              class="w-full md:w-[calc((100%-2rem)/2)] max-w-[520px] h-auto rounded-xl"
+              alt={alt}
+              width={width}
+              height={height}
+            />
+          ))
+        ) : (
+          <p class="text-center text-sm opacity-80">No items to display.</p>
+        )
+      }
+    </div>
+  </div>
+</section>

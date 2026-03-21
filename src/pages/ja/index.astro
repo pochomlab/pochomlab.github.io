@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import Hero from '~/components/widgets/Hero_PochomLab.astro';
+
+import Entry from './_sections/Entry.astro';
+import LatestUpdates from './_sections/LatestUpdates.astro';
+import Announce from './_sections/Announce.astro';
+
+const metadata = {
+  title: 'PochomLab - 生成AIと絵書制作を軸に、創作・技術・IP戦略を実装し、未来へ接続するラボ',
+  ignoreTitleTemplate: true,
+};
+
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero lightUrl="/images/pochomlab-hero-light-jp.jpg" darkUrl="/images/pochomlab-hero-dark-jp.jpg">
+    <Fragment slot="title">
+      AIで描く、<br />
+      <span class="text-[#FF5B50] dark:text-[#FFB74D]">たましいの灯。</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      生成AIと絵書制作を軸に、<br />
+      創作・技術・IP戦略を実装し、未来へ接続するラボ。
+    </Fragment>
+  </Hero>
+
+  <!-- Announce -->
+  <Announce />
+
+  <!-- Feature Entry (6 cards) -->
+  <Entry />
+
+  <!-- Latest Log Entries -->
+  <LatestUpdates />
+
+</Layout>

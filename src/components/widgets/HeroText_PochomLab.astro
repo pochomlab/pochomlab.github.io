@@ -1,0 +1,52 @@
+---
+export interface Props {
+  chapter?: string; // 例: "Chapter 2" / "第2章"
+  title?: string; // 例: "Seeds of Kindness" / "やさしさの たね"
+  subtitle?: string;
+  content?: string;
+}
+
+const { chapter: chapterProp, title: titleProp, subtitle: subtitleProp, content: contentProp } = Astro.props;
+
+const chapterSlot = (await Astro.slots.render('chapter')) ?? '';
+const titleSlot = (await Astro.slots.render('title')) ?? '';
+const subtitleSlot = (await Astro.slots.render('subtitle')) ?? '';
+const contentSlot = (await Astro.slots.render('content')) ?? '';
+
+const chapter = chapterSlot || chapterProp || '';
+const title = titleSlot || titleProp || '';
+const subtitle = subtitleSlot || subtitleProp || '';
+const content = contentSlot || contentProp || '';
+---
+
+<section class="relative md:-mt-[76px] not-prose bg-neutral-100 dark:bg-slate-950">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+
+    <div class="py-12 md:py-20 pb-8 md:pb-8">
+      <div class="text-center max-w-5xl mx-auto">
+        {
+          chapter && (
+            <div class="text-sm tracking-widest uppercase text-neutral-500 dark:text-neutral-400 mb-3">{chapter}</div>
+          )
+        }
+
+        {
+          title && (
+            <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+              {title}
+            </h1>
+          )
+        }
+
+        <div class="max-w-3xl mx-auto">
+          {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300">{subtitle}</p>}
+        </div>
+
+        {content && <p class="mt-6 text-sm tracking-wide opacity-60">{content}</p>}
+      </div>
+    </div>
+  </div>
+</section>

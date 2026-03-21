@@ -1,0 +1,105 @@
+---
+type Chapter = {
+  emoji: string;
+  chapter: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const data = {
+  title: 'Abyss — World and Structure',
+
+  world: {
+    title: 'World',
+    image: '/images/egaki-sho/egaki-sho-world.webp',
+    alt: 'A fragment of the Egaki-sho world',
+    width: 800,
+    height: 450,
+    caption: 'A world with layers. The story unfolds within them.',
+  },
+
+  structure: {
+    title: 'Structure',
+  },
+
+  chapters: [
+    {
+      emoji: '🌱',
+      chapter: 'Chapter 1',
+      title: 'The Beginning of Life',
+      description: 'Here lies a very, very small forest of beginnings.',
+      href: '/en/egaki-sho/chapter-1',
+    },
+    {
+      emoji: '🔍',
+      chapter: 'Chapter 2',
+      title: 'Seeds of Kindness',
+      description: 'Something that gently touched the heart.',
+      href: '/en/egaki-sho/chapter-2',
+    },
+    {
+      emoji: '❄️',
+      chapter: 'Chapter 3',
+      title: 'A Wandering Journey',
+      description: 'Lost and wandering, and still moving forward.',
+      href: '/en/egaki-sho/chapter-3',
+    },
+    {
+      emoji: '🌌',
+      chapter: 'Chapter 4',
+      title: 'The Soul Metaverse',
+      description: 'Welcome to the metaverse of the soul.',
+      href: '/en/egaki-sho/chapter-4',
+    },
+  ] satisfies Chapter[],
+};
+---
+
+<section id="abyss" class="py-32 bg-slate-950 text-neutral-100">
+  <div class="container mx-auto max-w-5xl text-center">
+    <h2 class="font-serif text-3xl md:text-4xl mb-16">
+      {data.title}
+    </h2>
+
+    <!-- World -->
+    <div class="mb-24">
+      <div class="text-xs tracking-[0.35em] text-neutral-500 mb-6 uppercase">
+        {data.world.title}
+      </div>
+
+      <img
+        src={data.world.image}
+        alt={data.world.alt}
+        width={data.world.width}
+        height={data.world.height}
+        class="mx-auto rounded-xl opacity-90"
+      />
+
+      <p class="mt-6 text-lg text-neutral-300">
+        {data.world.caption}
+      </p>
+    </div>
+
+    <!-- Structure -->
+    <div class="text-xs tracking-[0.35em] text-neutral-500 mb-10 uppercase">
+      {data.structure.title}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      {
+        data.chapters.map((c) => (
+          <a href={c.href} class="group block text-center transition duration-300 hover:-translate-y-1">
+            <div class="text-2xl mb-3">{c.emoji}</div>
+
+            <div class="text-xs tracking-widest text-neutral-400 mb-2">{c.chapter}</div>
+
+            <div class="font-serif text-base text-neutral-100 mb-3">{c.title}</div>
+
+            <div class="text-sm text-neutral-400 leading-relaxed">{c.description}</div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

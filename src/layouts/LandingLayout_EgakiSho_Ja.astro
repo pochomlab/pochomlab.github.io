@@ -1,0 +1,28 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import Header from '~/components/widgets/Header_PochomLab.astro';
+
+import { headerDataJa } from '~/navigation-ja';
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+const { metadata } = Astro.props;
+---
+
+<PageLayout metadata={metadata}>
+  <Fragment slot="announcement">
+    <slot name="announcement" />
+  </Fragment>
+  <Fragment slot="header">
+    <slot name="header">
+      <Header
+        links={headerDataJa?.links[0] ? [headerDataJa.links[0]] : undefined}
+        showToggleTheme
+        position="right"
+      />
+    </slot>
+  </Fragment>
+  <slot />
+</PageLayout>

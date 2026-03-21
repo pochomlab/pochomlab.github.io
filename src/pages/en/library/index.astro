@@ -1,0 +1,279 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro';
+import HeroText from '~/components/widgets/HeroText_PochomLab.astro';
+import StoreButton from '~/components/ui/StoreButton.astro';
+
+const metadata = {
+  title: 'Library',
+  description: 'Publications by PochomLab',
+};
+
+// ====== 商品データ（ここを増やしていく） ======
+const EGAKI_SHO = [
+  {
+    store: 'kdp',    
+    title: 'Chapter 1: The Beginning of Life',
+    cover: '/images/library/cover-egaki-sho-ch1.webp',
+    url: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
+    disable: false,
+  },
+  {
+    store: 'kdp',    
+    title: 'Chapter 2: Seeds of Kindness',
+    cover: '/images/library/cover-egaki-sho-ch2.webp',
+    url: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+    disable: false,
+  },
+  {
+    store: 'kdp',    
+    title: 'Chapter 3: A Wandering Journey',
+    cover: '/images/library/cover-egaki-sho-ch3.webp',
+    url: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
+    disable: false,
+  },
+  {
+    store: 'kdp',    
+    title: 'Chapter 4: The Soul Metaverse',
+    cover: '/images/library/cover-egaki-sho-ch4.webp',
+    url: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
+    disable: false,
+  },
+];
+
+const ZINE = [
+  {
+    title: '🌱 3-Book Set',
+    cover: '/images/library/cover-egaki-set-en.webp',
+    cta1: {
+      store: 'booth',
+      aria: 'View on Booth',
+      label: 'Booth',
+      url: 'https://booth.pm/',
+      disable: true,
+    },  
+  },  
+  {
+    title: '📗 The Creation Process',
+    cover: '/images/library/cover-egaki-create-ch1-en.webp',
+    cta1: {
+      store: 'booth',
+      aria: 'View on Booth',
+      label: 'Booth',
+      url: 'https://booth.pm/',
+      disable: true,
+    },
+    cta2: {
+      store: 'kdp',
+      aria: 'View on KDP Paperback',
+      label: 'KDP Paperback',
+      url: 'https://www.amazon.co.jp/',
+      disable: true,
+    }, 
+  },
+  {
+    title: '📙 Character Design',
+    cover: '/images/library/cover-egaki-create-ch2-en.webp',
+    cta1: {
+      store: 'booth',
+      aria: 'View on Booth',
+      label: 'Booth',
+      url: 'https://booth.pm/',
+      disable: true,
+    },
+    cta2: {
+      store: 'kdp',
+      aria: 'View on KDP Paperback',
+      label: 'KDP Paperback',
+      url: 'https://www.amazon.co.jp/',
+      disable: true,
+    },   
+  },
+  {
+    title: '📘 Publishing Guide',
+    cover: '/images/library/cover-egaki-create-ch3-en.webp',
+    cta1: {
+      store: 'booth',
+      aria: 'View on Booth',
+      label: 'Booth',
+      url: 'https://booth.pm/',
+      disable: true,
+    },
+    cta2: {
+      store: 'kdp',
+      aria: 'View on KDP Paperback',
+      label: 'KDP Paperback',
+      url: 'https://www.amazon.co.jp/',
+      disable: true,
+    },   
+  },
+];
+
+// ToC（将来セクションが増えたらここに追加）
+const SECTIONS = [
+  { id: 'egaki-sho', label: 'Pochomkin Egaki-sho Series' },
+  { id: 'creation-zine', label: 'Egaki-sho: Let’s Create! ZINE Series' },
+];
+---
+
+<PageLayout metadata={metadata}>
+  <!-- Hero -->
+  <HeroText title="Library" subtitle="Publications by PochomLab" />
+
+  <section class="bg-neutral-100 dark:bg-slate-950">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <!-- ToC（セクションが増えたら表示） -->
+      {
+        SECTIONS.length >= 2 && (
+          <nav class="mb-8">
+            <div class="text-sm text-slate-600 dark:text-slate-300 mb-2">Jump to</div>
+            <ul class="flex flex-wrap gap-2">
+              {SECTIONS.map((s) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 px-3 py-1 text-sm text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 transition"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      <!-- ===== 絵書 ===== -->
+      <div id="egaki-sho" class="scroll-mt-24">
+        <div class="mb-4 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">🍄‍🟫Pochomkin Egaki-sho Series</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {
+            EGAKI_SHO.map((item) => (
+              <article
+                class="group rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/70 overflow-hidden
+                     transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+              >
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="block">
+                  <div class="aspect-[3/4] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <img
+                      src={item.cover}
+                      alt={item.title}
+                      loading="lazy"
+                      width="1748"
+                      height="2560"
+                      class="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                </a>
+
+                <div class="p-3 sm:p-4 flex flex-col min-h-[112px]">
+                  <h3
+                    class="text-sm sm:text-[15px] font-medium text-slate-900 dark:text-white
+                           leading-snug overflow-hidden
+                           line-clamp-2 h-[2.6em]"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <div class="mt-auto pt-3">
+                    <StoreButton
+                      store={item.store}
+                      url={item.url}
+                      aria="Read on Kindle"
+                      label="Read on Kindle"
+                      fullWidth={true}
+                      disabled={item.disable}
+                    />
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <div class="mt-4 sm:mt-6 text-center">
+          <p>
+            This link leads to the Japanese Kindle edition on Amazon.
+            <br />
+            English edition coming soon.
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== ZINE ===== -->
+      <div id="creation-zine" class="scroll-mt-24 mt-12 sm:mt-14">
+        <div class="mb-4 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">📚Egaki-sho: Let’s Create! ZINE Series</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {
+            ZINE.map((z) => (
+              <article
+                class="group rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/70 overflow-hidden
+                     transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div class="aspect-[3/4] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                  <img
+                    src={z.cover}
+                    alt={z.title}
+                    loading="lazy"
+                    width="1748"
+                    height="2560"
+                    class="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                  />
+                </div>
+
+                <div class="p-3 sm:p-4 flex flex-col min-h-[112px]">
+                  <h3
+                    class="text-sm sm:text-[15px] font-medium text-slate-900 dark:text-white
+                           leading-snug overflow-hidden
+                           line-clamp-2 h-[1.6em]"
+                  >
+                    {z.title}
+                  </h3>
+
+                  <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
+
+                    <StoreButton
+                      store={z.cta1.store}
+                      url={z.cta1.url}
+                      aria={z.cta1.aria}
+                      label={z.cta1.label}
+                      fullWidth={true}
+                      disabled={z.cta1.disable}
+                    />
+
+                    {
+                      z.cta2 && (
+                        <StoreButton
+                          store={z.cta2.store}
+                          url={z.cta2.url}
+                          aria={z.cta2.aria}
+                          label={z.cta2.label}
+                          fullWidth={true}
+                          disabled={z.cta2.disable}
+                        />
+                      )
+                    }
+
+                    <center>
+                      <p >Coming soon</p>
+                    </center>
+
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <!-- <div class="mt-4 sm:mt-6 text-center">
+          <p>
+            Japanese edition available on Booth.
+          </p>
+        </div> -->
+      </div>
+    </div>
+  </section>
+</PageLayout>

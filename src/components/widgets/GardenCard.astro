@@ -1,0 +1,102 @@
+---
+export type GardenCardProps = {
+  href: string;
+  name?: string;
+  name_en?: string;
+  description?: string;
+  comment?: string;
+  avatar?: string;
+  role?: string;
+  external?: boolean;
+  id?: string;
+};
+
+const {
+  href,
+  name,
+  name_en,
+  description,
+  comment,
+  avatar,
+  role,
+  external = false,
+  id,
+} = Astro.props as GardenCardProps;
+
+// 日本語があれば優先、なければ英語を繰り上げ
+const displayName = (name && name.trim()) ? name : (name_en ?? '');
+
+// 英語名が存在し、日本語と違う場合のみ表示
+const displayNameEn =
+  (name_en && name_en.trim() && displayName !== name_en)
+    ? name_en
+    : '';
+
+const linkAttrs = external
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
+---
+
+<a
+  href={href}
+  {...linkAttrs}
+  class="group rounded-2xl border border-neutral-200/60 bg-white/50 p-5 hover:bg-white hover:shadow-sm transition dark:border-neutral-800 dark:bg-neutral-950/40 dark:hover:bg-neutral-950"
+>
+  <article id={id} class="scroll-mt-24">
+    <div class="flex items-start gap-4">
+      {
+        avatar ? (
+          <img
+            src={avatar}
+            alt={displayName}
+            class="h-12 w-12 rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div class="h-12 w-12 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700" />
+        )
+      }
+
+      <div class="min-w-0">
+
+        {/* 名前ブロック（高さ固定で段落ズレ防止） */}
+        <div class="min-h-[3.2rem]">
+          <div class="flex items-center gap-2">
+            <div class="truncate text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+              {displayName}
+            </div>
+
+            {
+              role ? (
+                <span class="shrink-0 rounded-full border border-neutral-200/60 px-2 py-0.5 text-xs text-neutral-600 dark:border-neutral-800 dark:text-neutral-300">
+                  {role}
+                </span>
+              ) : null
+            }
+          </div>
+
+          <div class="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">
+            {displayNameEn}
+          </div>
+        </div>
+
+        {
+          description ? (
+            <div class="mt-1 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-300">
+              {description}
+            </div>
+          ) : null
+        }
+
+        {
+          comment ? (
+            <div class="mt-3 text-sm text-neutral-500 dark:text-neutral-400 whitespace-pre-line line-clamp-3">
+              {comment}
+            </div>
+          ) : null
+        }
+      </div>
+    </div>
+  </article>
+</a>

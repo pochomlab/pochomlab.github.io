@@ -1,0 +1,59 @@
+---
+const data = {
+  title: 'ZINEとは、文化の設計図である。',
+  items: [
+    {
+      q: '📚なぜ、ZINEなのか',
+      a: [
+        'ZINEは、完成品を飾るための器ではない。',
+        '試行錯誤の構造を、そのまま残すための形式である。',
+        '作品の裏側には、無数の選択と判断が積み重なっている。',
+        'それを省略せず記録するために、ZINEという形を選んだ。',
+      ],
+    },
+    {
+      q: '🧪なぜ、実験過程を公開するのか',
+      a: [
+        '目的は透明性ではない。',
+        '再現可能な“型”を手渡すためである。',
+        '思考・技法・判断基準。創作の背骨を可視化することで、読む人は創る側へと移行する。',
+      ],
+    },
+    {
+      q: '🌎なぜ、英語版があるのか',
+      a: [
+        '文化は、閉じた瞬間に止まる。',
+        '英語版は翻訳ではない。文化を外へ接続するための装置である。',
+        '言語を越えることで、構造は普遍化される。',
+      ],
+    },
+  ],
+};
+---
+
+<section id="about-zine" class="scroll-mt-16 relative py-16 md:py-24 bg-slate-950 text-neutral-100">
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-slate-950">
+  </div>
+
+  <div class="relative container mx-auto max-w-5xl px-4">
+    <header class="text-center">
+      <h2 class="font-serif text-3xl md:text-4xl tracking-tight">{data.title}</h2>
+      <div class="mx-auto mt-6 h-px w-20 bg-white/15"></div>
+    </header>
+
+    <div class="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
+      {
+        data.items.map((it) => (
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-7 backdrop-blur">
+            <h3 class="text-base md:text-lg font-semibold tracking-wide">{it.q}</h3>
+            <div class="mt-4 space-y-3 text-sm md:text-[15px] leading-relaxed text-neutral-200">
+              {it.a.map((line) => (
+                <p class="text-neutral-200/95">{line}</p>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

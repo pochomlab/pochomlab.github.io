@@ -1,0 +1,30 @@
+---
+// 目次コンポーネント
+const { title, items = [], labelWidth = "w-24" } = Astro.props;
+---
+
+<!-- 3. 灯の目次（第1章） -->
+<section id="lights" class="py-20 bg-neutral-100 dark:bg-slate-950">
+  <div class="container mx-auto max-w-5xl">
+    {title && <h2 class="text-2xl font-serif mb-10 text-center">{title}</h2>}
+    <!-- ここがポイント：リストの箱を中央に置く -->
+    {
+      items && items.length ? (
+        <div class="mx-auto w-fit">
+          <ol class="space-y-3 text-lg">
+            {items.map(({ label, description }) => (
+              <li class="text-left">
+                <span class={`inline-block ${labelWidth} font-mono text-neutral-400 dark:text-neutral-500`}>
+                  {label}
+                </span>
+                ｜&ensp;{description}
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : (
+        <p class="text-center text-sm opacity-80">No items to display.</p>
+      )
+    }
+  </div>
+</section>

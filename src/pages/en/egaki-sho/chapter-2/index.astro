@@ -1,0 +1,111 @@
+---
+import Layout from '~/layouts/LandingLayout_EgakiSho_En.astro';
+
+const metadata = {
+  title: 'Egaki-sho of the Pochomkin — A Story of Lights | PochomLab',
+};
+
+import Hero from '~/components/widgets/HeroText_PochomLab.astro';
+import CardText from '~/components/widgets/CardText_PochomLab.astro';
+import ToC from '~/components/widgets/ToC_PochomLab.astro';
+import ImagePreview from '~/components/widgets/ImagePreview_PochomLab.astro';
+import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
+import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
+---
+
+<Layout metadata={metadata}>
+  <!-- 1. Hero -->
+  <Hero
+    chapter="Chapter 2"
+    title="Seeds of Kindness"
+    subtitle="A small seed that fell into the heart."
+    content="Invisible feelings begin to reach for someone."
+  />
+
+  <!-- 2. What you will encounter in this chapter -->
+  <CardText
+    title="What you will encounter in this chapter"
+    items={[
+      {
+        title: '🌙 Fear',
+        description: 'A light of unease, not yet formed into words.',
+      },
+      {
+        title: '🤝 A Friend',
+        description: 'Someone who stands beside you. The moment distance closes.',
+      },
+      {
+        title: '🌱 Kindness',
+        description: 'A seed that touched the heart. A quiet strength that begins to grow.',
+      },
+    ]}
+  />
+
+  <!-- 3. Lights (keep titles in Japanese for now) -->
+  <ToC
+    title="Lights of Chapter 2"
+    labelWidth="w-12"     
+    items={[
+      { label: 'Light 09', description: 'まだよるがこわい' },
+      { label: 'Light 10', description: 'ともだちっているのかな' },
+      { label: 'Light 11', description: 'だいじょうぶのひかり' },
+      { label: 'Light 12', description: 'やさしくできたよ' },
+      { label: 'Light 13', description: 'おこってるの' },
+      { label: 'Light 14', description: 'にげこんだ もり' },
+      { label: 'Light 15', description: 'さわれないきもち' },
+      { label: 'Light 16', description: 'いかだにのって' },
+    ]}
+  />
+
+  <ImagePreview
+    title="Preview"
+    items={[
+      {
+        src: '/images/egaki-sho/egaki-sho-ch2-preview1.webp',
+        alt: 'Chapter 2 preview — left page',
+        width: 1748,
+        height: 2480,
+      },
+      {
+        src: '/images/egaki-sho/egaki-sho-ch2-preview2.webp',
+        alt: 'Chapter 2 preview — right page',
+        width: 1748,
+        height: 2480,
+      },
+    ]}
+  />
+
+  <!-- 4. Read / Buy (CTA) -->
+  <CallToAction
+    title="Read / Buy"
+    button={{
+      text: 'Read on Kindle (KDP)',
+      href: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+    }}
+  >
+    <Fragment slot="content">
+      Read Chapter 2 (Lights 09–16) as one complete volume.
+      <br />
+      Egaki-sho comes to life through the rhythm of space and the breathing of its pages.
+    </Fragment>
+    <Fragment slot="annotation">
+      <i>
+        This link leads to the Japanese Kindle edition on Amazon.
+        <br />
+        English edition coming soon.
+      </i>
+    </Fragment>
+  </CallToAction>
+
+  <!-- 5. Next chapter -->
+  <CardLink
+    title="Next Chapter"
+    chapter="Chapter 3"
+    chapterTitle="A Wandering Journey"
+    chapterDescription="Kindness eventually becomes a step forward."
+    button={{
+      text: 'View Chapter 3',
+      href: '/en/egaki-sho/chapter-3',
+    }}
+  />
+</Layout>

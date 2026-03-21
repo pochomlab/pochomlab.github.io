@@ -1,0 +1,112 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+
+const id = ANALYTICS?.vendors?.googleAnalytics?.id
+  ? String(ANALYTICS.vendors.googleAnalytics.id)
+  : null;
+
+const isProd = import.meta.env.PROD;
+const jaWord = "このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。";
+const enWord = "We use analytics (Google Analytics) to measure site usage using cookies and similar technologies.";
+const rejectButton = "拒否 / Reject";
+const acceptButton = "同意 / Accept";
+---
+
+{isProd && id ? (
+  <div
+    id="consent-banner"
+    class="fixed bottom-2 left-1/2 z-50 hidden w-[calc(100%-1rem)] -translate-x-1/2 sm:bottom-3 sm:w-[calc(100%-1.5rem)]"
+  >
+    <div class="mx-auto max-w-5xl rounded-xl border border-white/15 bg-black/55 text-white backdrop-blur-md shadow-lg">
+      <div class="flex flex-col gap-3 p-4 md:flex-row md:items-center">
+        <p class="text-sm leading-relaxed text-white/90 md:flex-1">
+          <span class="block">
+            {jaWord}
+          </span>
+          <span class="mt-1 block text-white/75">
+            {enWord}
+          </span>
+        </p>
+
+        <div class="flex flex-col gap-2 sm:flex-row md:ml-auto">
+          <button
+            id="consent-reject"
+            class="rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15"
+            type="button"
+          >
+            {rejectButton}
+          </button>
+          <button
+            id="consent-accept"
+            class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
+            type="button"
+          >
+            {acceptButton}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        console.log('■ ConsentBanner');
+        const KEY = "pochom_consent";
+        const banner = document.getElementById("consent-banner");
+        const accept = document.getElementById("consent-accept");
+        const reject = document.getElementById("consent-reject");
+
+        function show() { banner.classList.remove("hidden"); }
+        function hide() { banner.classList.add("hidden"); }
+
+        // === 1. 保存されているのは "granted" のみ ===
+        try {
+          const saved = localStorage.getItem(KEY);
+          if (saved === "granted") {
+            // 同意済み → Consent Mode を復元
+            if (typeof window.gtag === "function") {
+              console.log('同意済み → Consent Mode を復元');
+              window.gtag("consent", "update", { analytics_storage: "granted" });
+            }
+            return; // バナーを出さない
+          }
+        } catch { /* empty */ }
+
+        // === 2. 未決定 → バナー表示 ===
+        show();
+
+        // === 3. 同意ボタン ===
+        accept.addEventListener("click", function () {
+          console.log('3. 同意ボタン');
+
+          try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
+
+          function waitForGtag() {
+            if (!window.dataLayer || window.dataLayer.length === 0) {
+              console.log("gtag 初期化待ち…");
+              return requestAnimationFrame(waitForGtag);
+            }
+
+            console.log("サイコザク行きまーす！！");
+            window.gtag("consent", "update", { analytics_storage: "granted" });
+            window.gtag('event', 'page_view', {
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+              page_title: document.title,
+            });
+          }
+
+          waitForGtag();
+          hide();
+        });
+
+
+        // === 4. 拒否ボタン ===
+        reject.addEventListener("click", function () {
+          console.log('4. 拒否ボタン');
+          // "denied" は保存しない（default が denied）
+          hide();
+        });
+      })();
+    </script>
+  </div>
+) : null}

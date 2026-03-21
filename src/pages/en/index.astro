@@ -1,0 +1,39 @@
+---
+import Layout from '~/layouts/PageLayout_PochomLab_En.astro';
+import Hero from '~/components/widgets/Hero_PochomLab.astro';
+
+import Entry from './_sections/Entry.astro';
+import LatestUpdates from './_sections/LatestUpdates.astro';
+import Announce from './_sections/Announce.astro';
+
+const metadata = {
+  title:
+    'PochomLab — A lab exploring creative production, technology, and IP strategy through generative AI and Egaki-sho creation',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero lightUrl="/images/pochomlab-hero-light-en.jpg" darkUrl="/images/pochomlab-hero-dark-en.jpg">
+    <Fragment slot="title">
+      AI Drawing
+      <br />
+      <span class="text-[#FF5B50] dark:text-[#FFB74D]">Lights of the Soul</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      A lab exploring creativity, technology, and IP strategy through generative AI and Egaki-sho creation.
+    </Fragment>
+  </Hero>
+
+  <!-- Announce -->
+  <Announce />
+
+  <!-- Feature Entry (6 cards) -->
+  <Entry />
+
+  <!-- Latest Log Entries -->
+  <LatestUpdates />
+</Layout>

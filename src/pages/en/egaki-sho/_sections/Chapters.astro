@@ -1,0 +1,103 @@
+---
+type ChapterCard = {
+  href: string;
+  image: { src: string; alt: string; width: number; height: number };
+  chapterLabel: string;
+  title: string;
+  lead: string;
+};
+
+const data = {
+  id: 'chapters',
+  title: 'Journey — Main Story',
+  subtitle: 'A chain of lights becomes chapters, and the chapters become a journey.',
+
+  cards: [
+    {
+      href: '/en/egaki-sho/chapter-1',
+      image: {
+        src: '/images/egaki-sho/egaki-sho-chapter-1.webp',
+        alt: 'Chapter 1 — The Beginning of Life',
+        width: 1280,
+        height: 800,
+      },
+      chapterLabel: 'Chapter 1',
+      title: 'The Beginning of Life',
+      lead: 'A small light of beginning.',
+    },
+    {
+      href: '/en/egaki-sho/chapter-2',
+      image: {
+        src: '/images/egaki-sho/egaki-sho-chapter-2.webp',
+        alt: 'Chapter 2 — Seeds of Kindness',
+        width: 1280,
+        height: 800,
+      },
+      chapterLabel: 'Chapter 2',
+      title: 'Seeds of Kindness',
+      lead: 'Something that gently touched the heart.',
+    },
+    {
+      href: '/en/egaki-sho/chapter-3',
+      image: {
+        src: '/images/egaki-sho/egaki-sho-chapter-3.webp',
+        alt: 'Chapter 3 — The Journey of Wandering',
+        width: 1280,
+        height: 800,
+      },
+      chapterLabel: 'Chapter 3',
+      title: 'A Wandering Journey',
+      lead: 'Lost and wandering, and still moving forward.',
+    },
+    {
+      href: '/en/egaki-sho/chapter-4',
+      image: {
+        src: '/images/egaki-sho/egaki-sho-chapter-4.webp',
+        alt: 'Chapter 4 — The Metaverse of the Soul',
+        width: 1280,
+        height: 800,
+      },
+      chapterLabel: 'Chapter 4',
+      title: 'The Soul Metaverse',
+      lead: 'Welcome to the metaverse of the soul.',
+    },
+  ] satisfies ChapterCard[],
+};
+---
+
+<section id={data.id} class="scroll-mt-4 relative isolate bg-slate-950 text-white">
+  <div class="mx-auto max-w-6xl px-6 py-28 md:py-36">
+    <div class="text-center">
+      <h2 class="text-3xl md:text-5xl font-light tracking-tight">{data.title}</h2>
+      <p class="mt-6 text-sm md:text-base text-gray-400">{data.subtitle}</p>
+    </div>
+
+    <div class="mt-16 grid gap-10 md:grid-cols-2">
+      {
+        data.cards.map((c) => (
+          <a
+            href={c.href}
+            class="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition duration-300 hover:-translate-y-1 will-change-transform"
+          >
+            <div class="aspect-[16/10] w-full overflow-hidden">
+              <img
+                src={c.image.src}
+                alt={c.image.alt}
+                class="h-full w-full object-cover group-hover:scale-[1.02] transition duration-500"
+                loading="lazy"
+                width={c.image.width}
+                height={c.image.height}
+              />
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs text-gray-400">{c.chapterLabel}</p>
+              <h3 class="mt-2 text-xl md:text-2xl font-light">{c.title}</h3>
+              <p class="mt-3 text-sm text-gray-400">{c.lead}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

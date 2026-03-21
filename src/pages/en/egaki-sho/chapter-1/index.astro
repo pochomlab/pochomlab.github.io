@@ -1,0 +1,114 @@
+---
+import Layout from '~/layouts/LandingLayout_EgakiSho_En.astro';
+const metadata = {
+  title: 'Egaki-sho of the Pochomkin — A Story of Lights | PochomLab',
+};
+import Hero from '~/components/widgets/HeroText_PochomLab.astro';
+import CardText from '~/components/widgets/CardText_PochomLab.astro';
+import ToC from '~/components/widgets/ToC_PochomLab.astro';
+import ImagePreview from '~/components/widgets/ImagePreview_PochomLab.astro';
+import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
+import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
+---
+
+<Layout metadata={metadata}>
+
+<!-- 1. Hero（章の顔） -->
+<Hero
+  chapter="Chapter 1"
+  title="The Beginning of Life"
+  subtitle="It was a light that had not yet been named."
+  content="A small awakening begins to move the world."
+/>
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<CardText
+  title="What you will encounter in this chapter"
+  items={[
+    {
+      title: '🐣 Pichom',
+      description: 'A small light, not yet anyone.',
+    },
+    {
+      title: '🌳 Forest of Beginnings',
+      description: 'The entrance to a layered world. A quiet breath.',
+    },
+    {
+      title: '✨ Awakening',
+      description: 'The first Ding. The moment the soul trembles.',
+    },
+  ]}
+/>
+
+
+<!-- 3. 灯の目次（第1章） -->
+<ToC
+  title="Lights of Chapter 1"
+  labelWidth="w-24"
+  items={[
+    { label: "Light 01", description: "うまれたひかり" },
+    { label: "Light 02", description: "そのひかりなあに" },
+    { label: "Light 03", description: "はじめてのみち" },
+    { label: "Light 04", description: "ちいさなこえ" },
+    { label: "Light 05", description: "さがしてみたい" },
+    { label: "Light 06", description: "ひかりのかけら" },
+    { label: "Light 07", description: "こわくてすすめない" },
+    { label: "Light 08", description: "ひかりのなえどこ" },
+  ]}
+/> 
+
+<ImagePreview
+  title="Preview"
+  items=
+  {[
+    {
+      src: "/images/egaki-sho/egaki-sho-ch1-preview1.webp",
+      alt: "Chapter 1 preview — left page.",
+      width: 1748,
+      height: 2480,
+    },
+    {
+      src: "/images/egaki-sho/egaki-sho-ch1-preview2.webp",
+      alt: "Chapter 1 preview — right page.",
+      width: 1748,
+      height: 2480,
+    },
+  ]}
+/>
+
+<!-- 4. 読む / 買う（CTA） -->
+<CallToAction
+  title="Read / Buy"
+  button={{
+    text: "Read on Kindle (KDP)",
+    href: "https://www.amazon.co.jp/dp/B0G3Q6C68P/"
+  }}
+>
+  <Fragment slot="content">
+    Read Chapter 1 (8 Lights) as one complete volume.
+    <br>
+    Egaki-sho comes to life through the rhythm of space and the breathing of its pages.
+  </Fragment>
+  <Fragment slot="annotation">
+    <i>
+      This link leads to the Japanese Kindle edition on Amazon.
+      <br>
+      English edition coming soon.
+    </i>
+  </Fragment>
+ 
+</CallToAction>
+
+<!-- 5. 次の章へ：次章カード -->
+<CardLink
+  title="Next Chapter"
+  chapter="Chapter 2"
+  chapterTitle="Seeds of Kindness"
+  chapterDescription="Beyond fear, kindness begins to grow."
+  button={{ 
+    text: "View Chapter 2", 
+    href: "/en/egaki-sho/chapter-2"
+  }}
+/>
+
+</Layout>

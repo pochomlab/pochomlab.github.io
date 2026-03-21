@@ -1,0 +1,61 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import GardenCard from '~/components/widgets/GardenCard.astro';
+
+import { getCollection } from 'astro:content';
+
+const entries = (await getCollection('garden307', ({ data }) => !data.draft)).sort(
+  (a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999)
+);
+---
+
+<PageLayout>
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 class="font-serif text-3xl md:text-4xl text-neutral-900 dark:text-neutral-50">🌳 307の庭</h1>
+
+      <p class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed">
+        ここは、絵書作者（エショナー）の灯が芽吹く庭です。
+        <br>
+        それぞれの活動ページへ、カードからアクセスできます。
+      </p>
+
+      {
+        entries.length > 0 ? (
+          <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {entries.map((e) => (
+                <GardenCard
+                  href={e.data.links?.site ?? e.data.links?.x ?? '#'}
+                  external={true}
+                  name={e.data.name}
+                  name_en={e.data.name_en}
+                  description={e.data.description}
+                  comment={e.data.comment}
+                  avatar={e.data.avatar}
+                  role={e.data.role}
+                  id={e.slug}
+                />
+            ))}
+          </div>
+        ) : (
+          <div class="mt-12 rounded-2xl border border-dashed border-neutral-300 p-10 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
+            準備中。カードは順次追加されます。
+          </div>
+        )
+      }
+
+      <div class="mt-16 text-sm text-neutral-500 dark:text-neutral-400">
+        <p>
+          🌱 307の庭に芽を植えたい方は、
+          <a
+            href="/ja/about#contact-garden-307"
+            class="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
+          >
+            掲載希望について
+          </a>
+          をご確認ください。
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

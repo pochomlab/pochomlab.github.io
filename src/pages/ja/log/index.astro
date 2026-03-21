@@ -1,0 +1,54 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro'; // 使ってるレイアウトに合わせて変更OK
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('log-ja', ({ data }) => !data.draft);
+const logs = all.filter((e) => !e.data.draft).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout>
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="mb-10">
+        <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">📃 Log</h1>
+        <p class="mt-4 text-neutral-600 dark:text-neutral-300">
+          創作と技術の過程を記録していくログです。
+          <br />
+          PochomLabの試行や活動の軌跡を、ここに残しています。
+        </p>
+      </header>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          logs.map((entry) => (
+            <a
+              class="group rounded-2xl border border-neutral-200/70 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/40 p-6 hover:shadow-sm transition"
+              href={`/ja/log/${entry.slug}`}
+            >
+              <div class="flex items-start justify-between gap-4">
+                <h2 class="text-lg font-semibold group-hover:underline underline-offset-4">{entry.data.title}</h2>
+                <time class="text-xs text-neutral-500 dark:text-neutral-400 whitespace-nowrap">
+                  {entry.data.date.toISOString().slice(0, 10)}
+                </time>
+              </div>
+
+              {entry.data.summary && (
+                <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-300">{entry.data.summary}</p>
+              )}
+
+              {entry.data.tags?.length ? (
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {entry.data.tags.map((t) => (
+                    <span class="text-xs rounded-full px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>

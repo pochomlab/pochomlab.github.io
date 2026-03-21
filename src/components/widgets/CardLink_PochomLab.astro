@@ -1,0 +1,30 @@
+---
+// 5. 次の章へ：次章カード
+const { title, chapter, chapterTitle, chapterDescription, button } = Astro.props;
+---
+
+<!-- 5. 次の章へ：次章カード -->
+<section id="next-chapter" class="py-24 bg-neutral-100 dark:bg-slate-950">
+  <div class="container mx-auto max-w-4xl text-center">
+    {title && <h2 class="text-xl font-serif mb-12 opacity-80">{title}</h2>}
+
+    {
+      chapter && chapterTitle && chapterDescription && (
+        <div class="bg-neutral-200/20 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-8">
+          <p class="text-sm opacity-60 mb-2">{chapter}</p>
+          <h3 class="text-2xl font-serif mb-4">{chapterTitle}</h3>
+          <p class="text-base opacity-80 mb-6">{chapterDescription}</p>
+          {button && typeof button === 'object' && (
+            <a
+              href={button.href}
+              class="inline-block px-6 py-3 rounded-lg border border-neutral-400
+                            hover:bg-neutral-200/70 dark:hover:bg-neutral-700 transition"
+            >
+              {button.text}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

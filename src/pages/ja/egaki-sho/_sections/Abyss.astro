@@ -1,0 +1,105 @@
+---
+type Chapter = {
+  emoji: string;
+  chapter: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const data = {
+  title: '深淵：世界と構造',
+
+  world: {
+    title: 'World',
+    image: '/images/egaki-sho/egaki-sho-world.webp',
+    alt: '絵書の世界断片',
+    width: 800,
+    height: 450,
+    caption: '層を持つ世界。物語はその内側で展開する。',
+  },
+
+  structure: {
+    title: 'Structure',
+  },
+
+  chapters: [
+    {
+      emoji: '🌱',
+      chapter: '第1章',
+      title: 'いのちの はじまり',
+      description: 'ここは ちいさな ちいさな はじまりのもり。',
+      href: '/ja/egaki-sho/chapter-1',
+    },
+    {
+      emoji: '🔍',
+      chapter: '第2章',
+      title: 'やさしさの たね',
+      description: 'こころに そっと ふれたもの。',
+      href: '/ja/egaki-sho/chapter-2',
+    },
+    {
+      emoji: '❄️',
+      chapter: '第3章',
+      title: 'まよいの たびじ',
+      description: 'まよって まよって それでも。',
+      href: '/ja/egaki-sho/chapter-3',
+    },
+    {
+      emoji: '🌌',
+      chapter: '第4章',
+      title: 'たましいの メタバース',
+      description: 'ようこそ、たましいの めたばーすへ。',
+      href: '/ja/egaki-sho/chapter-4',
+    },
+  ] satisfies Chapter[],
+};
+---
+
+<section id="abyss" class="py-32 bg-slate-950 text-neutral-100">
+  <div class="container mx-auto max-w-5xl text-center">
+    <h2 class="font-serif text-3xl md:text-4xl mb-16">
+      {data.title}
+    </h2>
+
+    <!-- World -->
+    <div class="mb-24">
+      <div class="text-xs tracking-[0.35em] text-neutral-500 mb-6 uppercase">
+        {data.world.title}
+      </div>
+
+      <img
+        src={data.world.image}
+        alt={data.world.alt}
+        width={data.world.width}
+        height={data.world.height}
+        class="mx-auto rounded-xl opacity-90"
+      />
+
+      <p class="mt-6 text-lg text-neutral-300">
+        {data.world.caption}
+      </p>
+    </div>
+
+    <!-- Structure -->
+    <div class="text-xs tracking-[0.35em] text-neutral-500 mb-10 uppercase">
+      {data.structure.title}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      {
+        data.chapters.map((c) => (
+          <a href={c.href} class="group block text-center transition duration-300 hover:-translate-y-1">
+            <div class="text-2xl mb-3">{c.emoji}</div>
+
+            <div class="text-xs tracking-widest text-neutral-400 mb-2">{c.chapter}</div>
+
+            <div class="font-serif text-base text-neutral-100 mb-3">{c.title}</div>
+
+            <div class="text-sm text-neutral-400 leading-relaxed">{c.description}</div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
