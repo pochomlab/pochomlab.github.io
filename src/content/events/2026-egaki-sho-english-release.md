@@ -15,7 +15,7 @@ tags:
   - "Release"
   - "Egaki-sho"
 author: "ぴーちゃん / P-chan"    
-draft: false
+draft: true
 ---
 
 ## 絵書 英語版 KDPリリース
