@@ -2,7 +2,7 @@
 title: "📙Pochomkin Egaki-sho Chapter 1-4 KDP release"
 type: release
 date: 2026-04-01
-startDate: 2026-04-22
+startDate: 2026-04-03
 location: "Online"
 cover: "/images/events/2026/2026-04-01-pochomkin-egaki-sho-english.webp"
 lineup:
@@ -15,14 +15,14 @@ tags:
   - "Release"
   - "Egaki-sho"
 author: "ぴーちゃん / P-chan"    
-draft: true
+draft: false
 ---
 
 ## 絵書 英語版 KDPリリース
 
 [English below ↓](#english)
 
-✨2026年4月22日、
+✨2026年4月03日、
 『ポチョム菌の絵書』英語版 第1章～第4章を
 KDPにてリリースします。
 
@@ -64,7 +64,7 @@ KDPにてリリースします。
 
 ## English
 
-✨On April 22, 2026,
+✨On April 3, 2026,
 the English edition of
 *Pochomkin Egaki-sho* Chapters 1–4
 will be released on KDP.
