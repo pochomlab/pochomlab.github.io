@@ -11,6 +11,7 @@
   "yaml.schemas": {
     "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
   },
+  "markdown.extension.toc.updateOnSave": false,  
   "eslint.useFlatConfig": true,
   "cSpell.words": [
     "astrolib",
@@ -20,6 +21,7 @@
     "frontmatter",
     "gtag",
     "Heros",
+    "Ollama",
     "partytown",
     "Pochom",
     "Pochomkin",
