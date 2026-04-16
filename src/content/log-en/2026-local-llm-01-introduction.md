@@ -9,7 +9,26 @@ author: "P-chan"
 draft: false
 ---
 
-## Trying Out Local LLMs
+### Local LLM Setup Series
+
+- [01] Learning the Basics
+- [[02] Choosing Models](/en/log/2026-local-llm-02-models)
+
+### 👀 Table of Contents
+
+- [🧪 Trying Out Local LLMs](#anchor1)
+- [🖥️ Local AI Platforms](#anchor2)
+- [💾 Models](#anchor3)
+- [🔍 Reading Model Names](#anchor4)
+- [👉 What Is Q4_K_M?](#anchor5)
+- [📝 Quick Glossary](#anchor6)
+- [✍️ Notes](#anchor7)
+
+---
+
+<a id="anchor1" class="scroll-mt-24"></a>
+
+## 🧪 Trying Out Local LLMs
 
 There are two main reasons I decided to try introducing local LLMs on the PochomLab machine.
 
@@ -62,7 +81,9 @@ For that reason, I decided to explore local LLMs as an environment that could he
 Once I started looking into local LLMs, model names and format names began appearing all at once.  
 So first, I want to roughly organize the terms that come up often.
 
-### 🖥️ Local AI Platforms
+<a id="anchor2" class="scroll-mt-24"></a>
+
+## 🖥️ Local AI Platforms
 
 These are the foundations used to run and manage LLMs (Large Language Models) on your own PC.
 
@@ -79,6 +100,8 @@ These are the foundations used to run and manage LLMs (Large Language Models) on
 - Can also be used as a local server
 
 ---
+
+<a id="anchor3" class="scroll-mt-24"></a>
 
 ## 💾 Models
 
@@ -100,6 +123,8 @@ it seems likely that choosing which pretrained model to use will also become imp
 | Command R | Cohere | Canada |
 
 ---
+
+<a id="anchor4" class="scroll-mt-24"></a>
 
 ## 🔍 Reading Model Names
 
@@ -142,6 +167,8 @@ It is especially widespread in environments based on `llama.cpp`.
 
 ---
 
+<a id="anchor5" class="scroll-mt-24"></a>
+
 ## 👉 What Is Q4_K_M?
 
 For example, a notation like `Q4_K_M` can be understood roughly as:
@@ -158,6 +185,8 @@ it is easier to move forward if you think of it first as a lightweight, practica
 In the local LLM world, `Q4_K_M` is often seen as a good balance between size and quality.
 
 ---
+
+<a id="anchor6" class="scroll-mt-24"></a>
 
 ## 📝 Quick Glossary
 
@@ -209,6 +238,8 @@ This means converting words or sentences into numerical data that makes semantic
 It is often used as a foundation for RAG and search.
 
 ---
+
+<a id="anchor7" class="scroll-mt-24"></a>
 
 ## ✍️ Notes
 
