@@ -13,6 +13,7 @@ draft: false
 
 - [01] 基礎知識の習得
 - [[02] モデルの選定](/ja/log/2026-local-llm-02-models)
+- [[03] Ollamaのインストールと動作確認](/ja/log/2026-local-llm-03-ollama)
 
 ### 👀目次
 
