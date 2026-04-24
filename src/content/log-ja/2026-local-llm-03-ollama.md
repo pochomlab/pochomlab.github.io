@@ -14,6 +14,7 @@ draft: false
 - [[01] 基礎知識の習得](/ja/log/2026-local-llm-01-introduction)
 - [[02] モデルの選定](/ja/log/2026-local-llm-02-models)
 - [03] Ollamaのインストールと動作確認
+- [[04] Open WebUIの導入とLAN内からの利用](/ja/log/2026-local-llm-04-open-webui)
 
 ### 👀目次
 
