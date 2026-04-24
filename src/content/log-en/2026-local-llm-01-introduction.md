@@ -14,6 +14,7 @@ draft: false
 - [01] Learning the Basics
 - [[02] Choosing Models](/en/log/2026-local-llm-02-models)
 - [[03] Installing Ollama and Checking It Works](/en/log/2026-local-llm-03-ollama)
+- [[04] Installing Open WebUI and Using It Across the LAN](/en/log/2026-local-llm-04-open-webui)
 
 ### 👀 Table of Contents
 
