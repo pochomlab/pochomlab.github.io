@@ -12,6 +12,7 @@ draft: false
 ### Raspberry Pi 4 Setup Series
 
 - [01] Hardware Setup
+- [[02] Installing Raspberry Pi OS](/en/log/2026-raspberry-pi-02-os-installation)
 
 ### 👀Table of Contents
 
