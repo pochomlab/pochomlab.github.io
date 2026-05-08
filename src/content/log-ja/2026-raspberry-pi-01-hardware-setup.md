@@ -12,6 +12,7 @@ draft: false
 ### Raspberry Pi 4 の導入シリーズ
 
 - [01] ハードウェアのセットアップ
+- [[02] Raspberry Pi OS のインストール](/ja/log/2026-raspberry-pi-02-os-installation)
 
 ### 👀目次
 
