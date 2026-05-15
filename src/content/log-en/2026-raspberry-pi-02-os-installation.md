@@ -13,6 +13,7 @@ draft: false
 
 - [[01] Hardware Setup](/en/log/2026-raspberry-pi-01-hardware-setup)
 - [02] Installing Raspberry Pi OS
+- [[03] Initial Setup and Basic Checks](/en/log/2026-raspberry-pi-03-initial-setup)
 
 ### 👀Table of Contents
 

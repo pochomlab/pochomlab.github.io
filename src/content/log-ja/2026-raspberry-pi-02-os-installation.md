@@ -13,6 +13,7 @@ draft: false
 
 - [[01] ハードウェアのセットアップ](/ja/log/2026-raspberry-pi-01-hardware-setup)
 - [02] Raspberry Pi OS のインストール
+- [[03] 初期設定と動作確認](/ja/log/2026-raspberry-pi-03-initial-setup)
 
 ### 👀目次
 
