@@ -14,6 +14,7 @@ draft: false
 - [01] Hardware Setup
 - [[02] Installing Raspberry Pi OS](/en/log/2026-raspberry-pi-02-os-installation)
 - [[03] Initial Setup and Basic Checks](/en/log/2026-raspberry-pi-03-initial-setup)
+- [[04] Editing Raspberry Pi Files from VS Code on a Work PC via SSH](/en/log/2026-raspberry-pi-04-vscode-ssh)
 
 ### 👀Table of Contents
 
