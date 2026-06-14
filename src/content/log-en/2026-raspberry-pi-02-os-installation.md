@@ -15,6 +15,7 @@ draft: false
 - [02] Installing Raspberry Pi OS
 - [[03] Initial Setup and Basic Checks](/en/log/2026-raspberry-pi-03-initial-setup)
 - [[04] Editing Raspberry Pi Files from VS Code on a Work PC via SSH](/en/log/2026-raspberry-pi-04-vscode-ssh)
+- [[05] Setting Up a Python Environment](/en/log/2026-raspberry-pi-05-python-environment)
 
 ### 👀Table of Contents
 

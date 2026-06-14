@@ -15,6 +15,7 @@ draft: false
 - [[02] Raspberry Pi OS のインストール](/ja/log/2026-raspberry-pi-02-os-installation)
 - [[03] 初期設定と動作確認](/ja/log/2026-raspberry-pi-03-initial-setup)
 - [[04] 作業用PCのVS CodeからSSHでRaspberry Piを編集する](/ja/log/2026-raspberry-pi-04-vscode-ssh)
+- [[05] Python環境を整える](/ja/log/2026-raspberry-pi-05-python-environment)
 
 ### 👀目次
 
