@@ -16,6 +16,7 @@ draft: false
 - [03] 初期設定と動作確認
 - [[04] 作業用PCのVS CodeからSSHでRaspberry Piを編集する](/ja/log/2026-raspberry-pi-04-vscode-ssh)
 - [[05] Python環境を整える](/ja/log/2026-raspberry-pi-05-python-environment)
+- [[06] Raspberry Pi からローカルLLMへ接続する](/ja/log/2026-raspberry-pi-06-local-llm-connection)
 
 ### 👀目次
 
