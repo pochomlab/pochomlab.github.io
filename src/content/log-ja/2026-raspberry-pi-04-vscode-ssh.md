@@ -17,6 +17,7 @@ draft: false
 - [04] 作業用PCの VS Code から SSH で Raspberry Pi を編集する
 - [[05] Python環境を整える](/ja/log/2026-raspberry-pi-05-python-environment)
 - [[06] Raspberry Pi からローカルLLMへ接続する](/ja/log/2026-raspberry-pi-06-local-llm-connection)
+- [[07] Raspberry Pi で Ollama と軽量モデルを試す](/ja/log/2026-raspberry-pi-07-ollama-lightweight-model)
 
 ### 👀目次
 
