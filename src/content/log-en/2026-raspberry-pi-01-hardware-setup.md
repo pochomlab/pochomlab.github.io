@@ -17,6 +17,7 @@ draft: false
 - [[04] Editing Raspberry Pi Files from VS Code on a Work PC via SSH](/en/log/2026-raspberry-pi-04-vscode-ssh)
 - [[05] Setting Up a Python Environment](/en/log/2026-raspberry-pi-05-python-environment)
 - [[06] Connecting from Raspberry Pi to a Local LLM](/en/log/2026-raspberry-pi-06-local-llm-connection)
+- [[07] Trying Ollama and Lightweight Models on Raspberry Pi](/en/log/2026-raspberry-pi-07-ollama-lightweight-model)
 
 ### 👀Table of Contents
 
