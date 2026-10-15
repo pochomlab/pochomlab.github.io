@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.flex-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub {
+    font-weight: 600;
+    color: #aaaaaa;
+}
+
+.icon-box {
+    padding-top: 4em;
+}
+
+.copyright-box {
+    padding-bottom:4em;
+}
+
+#footer {
+    padding: 0.5em 0 !important;
+}
+
+#footer .copyright {
+    margin: 0.5em 0px !important;
+}
