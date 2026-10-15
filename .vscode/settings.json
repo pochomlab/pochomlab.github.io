@@ -1,31 +1,6 @@
 {
-  "css.customData": ["./vscode.tailwind.json"],
-  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
-  "files.associations": {
-    "*.mdx": "markdown"
-  },
-  "prettier.documentSelectors": ["**/*.astro"],
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  },
-  "yaml.schemas": {
-    "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
-  },
-  "markdown.extension.toc.updateOnSave": false,  
-  "eslint.useFlatConfig": true,
-  "cSpell.words": [
-    "astrolib",
-    "astrowind",
-    "egaki",
-    "EPUB",
-    "frontmatter",
-    "gtag",
-    "Heros",
-    "Ollama",
-    "partytown",
-    "Pochom",
-    "Pochomkin",
-    "pochomlab",
-    "tabler"
-  ]
+    "cSpell.words": [
+        "dropotron",
+        "PochomLab"
+    ]
 }
